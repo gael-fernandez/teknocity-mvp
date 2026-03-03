@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-DATABASE_URL = "postgresql://postgres:TugFe/23@localhost:5432/teknocity"
+DATABASE_URL = "postgresql://postgres:TLP88GAM@localhost:5432/teknocity"
 
 engine = create_engine(DATABASE_URL)
 
@@ -12,9 +12,12 @@ SessionLocal = sessionmaker(
 )
 
 Base = declarative_base()
-if __name__ == "__main__":
+from sqlalchemy.orm import Session
+
+
+def get_db():
+    db = SessionLocal()
     try:
-        with engine.connect() as connection:
-            print("Conexión exitosa a PostgreSQL 🚀")
-    except Exception as e:
-        print("Error de conexión:", e)
+        yield db
+    finally:
+        db.close()
