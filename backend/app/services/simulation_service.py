@@ -10,8 +10,8 @@ def run_simulation(db: Session):
     baseline_throughput = random.uniform(80, 120)
 
     # RL metrics
-    rl_wait = random.uniform(20, 55)
-    rl_throughput = random.uniform(90, 140)
+    rl_wait = random.uniform(20, 45)
+    rl_throughput = random.uniform(120, 140)
 
     baseline_experiment = Experiment(
         name="Traffic Simulation",
